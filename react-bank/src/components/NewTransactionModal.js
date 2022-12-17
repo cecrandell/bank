@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import NewDepositForm from "./NewDepositForm";
+import NewTransactionForm from "./NewTransactionForm";
 
-class NewDepositModal extends Component {
+class NewTransactionModal extends Component {
   state = {
     modal: false
   };
@@ -16,10 +16,10 @@ class NewDepositModal extends Component {
   render() {
     const create = this.props.create;
 
-    var title = "Editing deposit";
+    var title = "Editing transaction";
     var button = <Button onClick={this.toggle}>Edit</Button>;
     if (create) {
-      title = "Creating new deposit";
+      title = "Creating new transaction";
 
       button = (
         <Button
@@ -40,10 +40,10 @@ class NewDepositModal extends Component {
           <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
 
           <ModalBody>
-            <NewDepositForm
+            <NewTransactionForm
               resetState={this.props.resetState}
               toggle={this.toggle}
-              deposit={this.props.deposit}
+              transaction={this.props.transaction}
             />
           </ModalBody>
         </Modal>
@@ -52,4 +52,4 @@ class NewDepositModal extends Component {
   }
 }
 
-export default NewDepositModal;
+export default NewTransactionModal;

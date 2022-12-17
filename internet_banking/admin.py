@@ -1,6 +1,4 @@
 from django.contrib import admin
-from .models import Deposit, Withdraw, Transfer
+from .models import Transaction
 
-admin.site.register(Deposit)
-admin.site.register(Withdraw)
-admin.site.register(Transfer)
+admin.site.register(Transaction)

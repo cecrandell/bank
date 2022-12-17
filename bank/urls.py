@@ -19,6 +19,6 @@ from internet_banking import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^api/deposits/$', views.deposits_list),
-    re_path(r'^api/deposits/([0-9])$', views.deposits_detail),
+    re_path(r'^api/transactions/$', views.transactions_list),
+    re_path(r'^api/transactions/([0-9])$', views.transactions_detail),
 ]

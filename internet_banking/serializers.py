@@ -1,9 +1,10 @@
 from rest_framework import serializers
-from .models import Deposit, Withdraw, Transfer
+from .models import Transaction
 
 
-class DepositSerializer(serializers.ModelSerializer):
+class TransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Deposit
-        fields = ('id', 'user_name', 'amount', 'created_date')
+        model = Transaction
+        fields = ('id', 'user_name', 'transaction_type', 'amount',
+                  'sender_user_name', 'receiver_user_name', 'created_date')

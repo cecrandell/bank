@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
-import DepositList from "./DepositList";
-import NewDepositModal from "./NewDepositModal";
+import TransactionList from "./TransactionList";
+import NewTransactionModal from "./NewTransactionModal";
 
 import axios from "axios";
 
@@ -9,19 +9,19 @@ import { API_URL } from "../constants";
 
 class Home extends Component {
   state = {
-    deposits: [],
+    transactions: [],
   };
 
   componentDidMount() {
     this.resetState();
   }
 
-  getDeposits = () => {
-    axios.get(API_URL).then((res) => this.setState({ deposits: res.data }));
+  getTransactions = () => {
+    axios.get(API_URL).then((res) => this.setState({ transactions: res.data }));
   };
 
   resetState = () => {
-    this.getDeposits();
+    this.getTransactions();
   };
 
   render() {
@@ -29,15 +29,15 @@ class Home extends Component {
       <Container style={{ marginTop: "20px" }}>
         <Row>
           <Col>
-            <DepositList
-              deposits={this.state.deposits}
+            <TransactionList
+              transactions={this.state.transactions}
               resetState={this.resetState}
             />
           </Col>
         </Row>
         <Row>
           <Col>
-            <NewDepositModal create={true} resetState={this.resetState} />
+            <NewTransactionModal create={true} resetState={this.resetState} />
           </Col>
         </Row>
       </Container>

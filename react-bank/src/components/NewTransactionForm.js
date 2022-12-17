@@ -5,16 +5,19 @@ import axios from "axios";
 
 import { API_URL } from "../constants";
 
-class NewDepositForm extends React.Component {
+class NewTransactionForm extends React.Component {
   state = {
     id: 1,
     user_name: 1,
+    transaction_type: "deposit",
     amount: "",
+    sender_user_name: 1,
+    receiver_user_name: 1,
   };
 
   componentDidMount() {
-    if (this.props.deposit) {
-      const { id, user_name, amount } = this.props.deposit;
+    if (this.props.transaction) {
+      const { id, user_name, amount } = this.props.transaction;
       this.setState({ id, user_name, amount });
     }
   }
@@ -23,7 +26,7 @@ class NewDepositForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  createDeposit = (e) => {
+  createTransaction = (e) => {
     e.preventDefault();
     axios.post(API_URL, this.state).then(() => {
       this.props.resetState();
@@ -31,7 +34,7 @@ class NewDepositForm extends React.Component {
     });
   };
 
-  editDeposit = (e) => {
+  editTransaction = (e) => {
     e.preventDefault();
     axios.put(API_URL + this.state.id, this.state).then(() => {
       this.props.resetState();
@@ -46,7 +49,9 @@ class NewDepositForm extends React.Component {
   render() {
     return (
       <Form
-        onSubmit={this.props.deposit ? this.editDeposit : this.createDeposit}
+        onSubmit={
+          this.props.transaction ? this.editTransaction : this.createTransaction
+        }
       >
         <FormGroup>
           <Label for="amount">Amount:</Label>
@@ -57,10 +62,10 @@ class NewDepositForm extends React.Component {
             value={this.defaultIfEmpty(this.state.amount)}
           />
         </FormGroup>
-        <Button>Deposit</Button>
+        <Button>Transact</Button>
       </Form>
     );
   }
 }
 
-export default NewDepositForm;
+export default NewTransactionForm;

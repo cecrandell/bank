@@ -8,7 +8,7 @@ import { API_URL } from "../constants";
 class NewDepositForm extends React.Component {
   state = {
     id: 1,
-    user_name: "carolinecrandell",
+    user_name: 1,
     amount: "",
   };
 

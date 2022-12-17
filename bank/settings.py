@@ -28,7 +28,7 @@ DEBUG = config('DEBUG')
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_ALLOW_ALL = config('CORS_ORIGIN_ALLOW_ALL')
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition

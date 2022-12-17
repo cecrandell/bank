@@ -8,20 +8,19 @@ class DepositList extends Component {
   render() {
     const deposits = this.props.deposits;
     return (
-      <Table dark>
+      <Table>
         <thead>
           <tr>
             <th>Username</th>
             <th>Amount</th>
             <th>Deposit Date</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           {!deposits || deposits.length <= 0 ? (
             <tr>
               <td colSpan="6" align="center">
-                <b>Ops, no one here yet</b>
+                <b>No transactions</b>
               </td>
             </tr>
           ) : (

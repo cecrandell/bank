@@ -1,0 +1,9 @@
+* {
+  /* https://fonts.google.com/specimen/Source+Sans+Pro */
+  font-family: "Source Sans Pro", sans-serif;
+}
+.nav-link,
+.navbar-brand {
+  color: white !important;
+  font-family: "GFS Didot", serif;
+}

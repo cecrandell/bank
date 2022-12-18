@@ -6,12 +6,12 @@
 
 I have developed an internet banking application where users are able to:
 
-* Create an account (username, first name, last name, email, and password)
-* Check their current balance
-* View a history of transactions
-* Deposit money 
-* Transfer money 
-* Withdraw money 
+- Create an account (username, first name, last name, email, and password)
+- Check their current balance
+- View a history of transactions
+- Deposit money
+- Transfer money
+- Withdraw money
 
 ![bank](images/bank.png)
 
@@ -19,20 +19,20 @@ I have developed an internet banking application where users are able to:
 
 The internet banking application is divided into the following folders:
 
-* **images folder** - contains images for this README document
-* **bank folder** - contains the fundamental code used to run the internet banking application (including settings.py)
-* **internet_banking folder** - contains the static files, database structure, and functionality of the NHS forms and clinician portal
-* **react-bank folder** - contains the React app frontend files
-* **.dockerignore** - document that indicates which files to omit from the Docker container
-* **.gitignore** - document that indicates which files to omit from the GitHub repository, such as the myvenv folder and the environment variables (i.e., passwords stored in the .env file)
-* **docker-compose.yml** - contains instructions for building a Docker container
-* **Dockerfile** - contains instructions for creating a Docker image
-* **manage.py file** - contains the code to run the internet banking application 
-* **README** - this document, providing background information for the application
-* **requirements.txt** - contains the instructions of which packages to install when creating a new virtual environment
-* **myvenv folder** - (in the .gitignore) contains the packages and virtual environment to run the internet banking application
-* **db.sqlite3** - (in the .gitignore) the database file
-* **internet_banking.log** - (in the .gitignore) the log to document notable events that occur when users interact with the internet banking application
+- **images folder** - contains images for this README document
+- **bank folder** - contains the fundamental code used to run the internet banking application (including settings.py)
+- **internet_banking folder** - contains the static files, database structure, and functionality of the NHS forms and clinician portal
+- **react-bank folder** - contains the React app frontend files
+- **.dockerignore** - document that indicates which files to omit from the Docker container
+- **.gitignore** - document that indicates which files to omit from the GitHub repository, such as the myvenv folder and the environment variables (i.e., passwords stored in the .env file)
+- **docker-compose.yml** - contains instructions for building a Docker container
+- **Dockerfile** - contains instructions for creating a Docker image
+- **manage.py file** - contains the code to run the internet banking application
+- **README** - this document, providing background information for the application
+- **requirements.txt** - contains the instructions of which packages to install when creating a new virtual environment
+- **myvenv folder** - (in the .gitignore) contains the packages and virtual environment to run the internet banking application
+- **db.sqlite3** - (in the .gitignore) the database file
+- **internet_banking.log** - (in the .gitignore) the log to document notable events that occur when users interact with the internet banking application
 
 **Step-by-Step on how to run the application**
 
@@ -107,6 +107,7 @@ You may now launch the application in your browser:
 ```js
 python manage.py runserver
 ```
+
 # To Set Up Docker (Optional)
 
 To build the Docker image:
@@ -157,18 +158,20 @@ And follow the prompts below within the Docker container:
 
 **Links to deployed version of application**
 
-* AWS Site:
+- AWS Site:
 
-**Technologies Used** 
+**Technologies Used**
 
-* React
-* Django
-* Python
-* SQLite
-* Docker
-* CSS
-* HTML
+- React
+- Django
+- Python
+- SQLite
+- Docker
+- CSS
+- HTML
 
-**Developer** 
+**Developer**
 
-* Caroline Crandell - cecrandell - cecrandell19@gmail.com
+- Caroline Crandell - cecrandell - cecrandell19@gmail.com
+
+<!-- https://blog.logrocket.com/using-react-django-create-app-tutorial/ -->

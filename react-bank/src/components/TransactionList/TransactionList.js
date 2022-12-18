@@ -1,17 +1,33 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
-import NewTransactionModal from "./NewTransactionModal";
-
-import ConfirmRemovalModal from "./ConfirmRemovalModal";
+import "./transactionList.css";
 
 class TransactionList extends Component {
+  rowColor = (type) => {
+    switch (type) {
+      case "deposit":
+        return "#eaf3f8";
+      case "withdraw":
+        return "#c3b5c1";
+      case "transfer":
+        return "#7998a3";
+      default:
+        return "";
+    }
+  };
+
   render() {
     const transactions = this.props.transactions;
     return (
       <Table>
         <thead>
-          <tr>
-            <th>Username</th>
+          <tr
+            style={{
+              backgroundColor: "#002a4d",
+              color: "white",
+              textAlign: "center",
+            }}
+          >
             <th>Transaction Type</th>
             <th>Transaction Amount</th>
             <th>Transaction Sender</th>
@@ -28,25 +44,17 @@ class TransactionList extends Component {
             </tr>
           ) : (
             transactions.map((transaction) => (
-              <tr key={transaction.id}>
-                <td>{transaction.user_name}</td>
-                <td>{transaction.transaction_type}</td>
+              <tr
+                key={transaction.id}
+                style={{
+                  backgroundColor: this.rowColor(transaction.transaction_type),
+                }}
+              >
+                <td>{transaction.transaction_type.toUpperCase()}</td>
                 <td>{transaction.amount}</td>
                 <td>{transaction.sender_user_name}</td>
                 <td>{transaction.receiver_user_name}</td>
                 <td>{transaction.created_date}</td>
-                <td align="center">
-                  <NewTransactionModal
-                    create={false}
-                    transaction={transaction}
-                    resetState={this.props.resetState}
-                  />
-                  &nbsp;&nbsp;
-                  <ConfirmRemovalModal
-                    id={transaction.id}
-                    resetState={this.props.resetState}
-                  />
-                </td>
               </tr>
             ))
           )}

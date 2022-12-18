@@ -11,7 +11,6 @@ class Header extends Component {
         collapseOnSelect
         expand="lg"
         style={{ backgroundColor: "#002a4d" }}
-        s
       >
         <Container>
           <Navbar.Brand href="/">Internet Banking Application</Navbar.Brand>
@@ -24,7 +23,6 @@ class Header extends Component {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
     );
   }
 }

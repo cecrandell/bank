@@ -3,24 +3,17 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 import axios from "axios";
 
-import { API_URL } from "../constants";
+import { API_URL } from "../../constants";
 
 class NewTransactionForm extends React.Component {
   state = {
     id: 1,
     user_name: 1,
-    transaction_type: "deposit",
+    transaction_type: this.props.transaction_type,
     amount: "",
     sender_user_name: 1,
     receiver_user_name: 1,
   };
-
-  componentDidMount() {
-    if (this.props.transaction) {
-      const { id, user_name, amount } = this.props.transaction;
-      this.setState({ id, user_name, amount });
-    }
-  }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -48,11 +41,7 @@ class NewTransactionForm extends React.Component {
 
   render() {
     return (
-      <Form
-        onSubmit={
-          this.props.transaction ? this.editTransaction : this.createTransaction
-        }
-      >
+      <Form onSubmit={this.createTransaction}>
         <FormGroup>
           <Label for="amount">Amount:</Label>
           <Input
@@ -62,7 +51,7 @@ class NewTransactionForm extends React.Component {
             value={this.defaultIfEmpty(this.state.amount)}
           />
         </FormGroup>
-        <Button>Transact</Button>
+        <Button>Make {this.props.transaction_type}</Button>
       </Form>
     );
   }

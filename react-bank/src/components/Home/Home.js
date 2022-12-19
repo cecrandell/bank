@@ -2,15 +2,29 @@ import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
 import TransactionList from "../TransactionList/TransactionList";
 import NewTransactionModal from "../NewTransactionModal/NewTransactionModal";
+import PieChart from "../PieChart/PieChart.js";
 
 import axios from "axios";
 
-import { TRANSACTIONS_API_URL, DEPOSITS_API_URL } from "../../constants";
+import {
+  TRANSACTIONS_API_URL,
+  DEPOSITS_API_URL,
+  WITHDRAWS_API_URL,
+  TRANSFERS_OUT_API_URL,
+  TRANSFERS_IN_API_URL,
+} from "../../constants";
 
 class Home extends Component {
   state = {
     transactions: [],
     total_deposits: 0,
+    total_withdraws: 0,
+    total_transfers_out: 0,
+    total_transfers_in: 0,
+    // total_balance:
+    //   this.state.total_deposits +
+    //   this.state.total_transfers_in -
+    //   (this.state.total_withdraws + this.state.total_transfers_out),
   };
 
   componentDidMount() {
@@ -26,6 +40,21 @@ class Home extends Component {
       .then((res) =>
         this.setState({ total_deposits: res.data.total_deposits })
       );
+    axios
+      .get(WITHDRAWS_API_URL)
+      .then((res) =>
+        this.setState({ total_withdraws: res.data.total_withdraws })
+      );
+    axios
+      .get(TRANSFERS_OUT_API_URL)
+      .then((res) =>
+        this.setState({ total_transfers_out: res.data.total_transfers_out })
+      );
+    axios
+      .get(TRANSFERS_IN_API_URL)
+      .then((res) =>
+        this.setState({ total_transfers_in: res.data.total_transfers_in })
+      );
   };
 
   resetState = () => {
@@ -36,7 +65,18 @@ class Home extends Component {
     return (
       <>
         <Container style={{ marginTop: "20px", textAlign: "center" }}>
-          {this.state.total_deposits}
+          <Row>
+            <Col>
+              <PieChart
+                deposits={this.state.total_deposits}
+                withdraws={this.state.total_withdraws}
+                transfers_out={this.state.total_transfers_out}
+                transfers_in={this.state.total_transfers_in}
+              />
+            </Col>
+          </Row>
+        </Container>
+        <Container style={{ marginTop: "20px", textAlign: "center" }}>
           <Row>
             <Col>
               <NewTransactionModal

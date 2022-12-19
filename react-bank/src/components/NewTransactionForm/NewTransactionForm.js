@@ -8,11 +8,11 @@ import { TRANSACTIONS_API_URL } from "../../constants";
 class NewTransactionForm extends React.Component {
   state = {
     id: 2,
-    user_name: 1,
+    user_name: "carolinecrandell",
     transaction_type: this.props.transaction_type,
     amount: "",
-    sender_user_name: 1,
-    receiver_user_name: 1,
+    sender_user_name: "cecrandell",
+    receiver_user_name: "carolinecrandell",
   };
 
   onChange = (e) => {

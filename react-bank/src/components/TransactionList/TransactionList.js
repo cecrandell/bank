@@ -3,14 +3,19 @@ import { Table } from "reactstrap";
 import "./transactionList.css";
 
 class TransactionList extends Component {
-  rowColor = (type) => {
+  rowColor = (type, sender_user_name) => {
     switch (type) {
       case "deposit":
-        return "#eaf3f8";
+        return "#004176";
       case "withdraw":
         return "#c3b5c1";
       case "transfer":
-        return "#7998a3";
+        if (sender_user_name === "carolinecrandell") {
+          return "#84516d";
+        } else {
+          return "#7998a3";
+        }
+
       default:
         return "";
     }
@@ -47,11 +52,21 @@ class TransactionList extends Component {
               <tr
                 key={transaction.id}
                 style={{
-                  backgroundColor: this.rowColor(transaction.transaction_type),
+                  backgroundColor: this.rowColor(
+                    transaction.transaction_type,
+                    transaction.sender_user_name
+                  ),
+                  color: "white",
                 }}
               >
                 <td>{transaction.transaction_type.toUpperCase()}</td>
-                <td>{transaction.amount}</td>
+                <td>
+                  {transaction.transaction_type === "withdraw" ? "-" : ""}
+                  {transaction.sender_user_name === "carolinecrandell"
+                    ? "-"
+                    : ""}
+                  ${transaction.amount.toFixed(2)}
+                </td>
                 <td>{transaction.sender_user_name}</td>
                 <td>{transaction.receiver_user_name}</td>
                 <td>{transaction.created_date}</td>

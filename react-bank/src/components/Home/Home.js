@@ -5,11 +5,12 @@ import NewTransactionModal from "../NewTransactionModal/NewTransactionModal";
 
 import axios from "axios";
 
-import { API_URL } from "../../constants";
+import { TRANSACTIONS_API_URL, DEPOSITS_API_URL } from "../../constants";
 
 class Home extends Component {
   state = {
     transactions: [],
+    total_deposits: 0,
   };
 
   componentDidMount() {
@@ -17,7 +18,14 @@ class Home extends Component {
   }
 
   getTransactions = () => {
-    axios.get(API_URL).then((res) => this.setState({ transactions: res.data }));
+    axios
+      .get(TRANSACTIONS_API_URL)
+      .then((res) => this.setState({ transactions: res.data }));
+    axios
+      .get(DEPOSITS_API_URL)
+      .then((res) =>
+        this.setState({ total_deposits: res.data.total_deposits })
+      );
   };
 
   resetState = () => {
@@ -28,6 +36,7 @@ class Home extends Component {
     return (
       <>
         <Container style={{ marginTop: "20px", textAlign: "center" }}>
+          {this.state.total_deposits}
           <Row>
             <Col>
               <NewTransactionModal

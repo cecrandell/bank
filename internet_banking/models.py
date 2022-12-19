@@ -5,14 +5,11 @@ from django.utils import timezone
 
 class Transaction(models.Model):
     id = models.AutoField(primary_key=True)
-    user_name = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='user_name', on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=255, blank=False, null=True)
     transaction_type = models.CharField(max_length=255, blank=False, null=True)
-    amount = models.IntegerField()
-    sender_user_name = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='sender_user_name', on_delete=models.CASCADE)
-    receiver_user_name = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='receiver_user_name', on_delete=models.CASCADE)
+    amount = models.IntegerField(blank=False, null=True)
+    sender_user_name = models.CharField(max_length=255, blank=False, null=True)
+    receiver_user_name = models.CharField(max_length=255, blank=False, null=True)
     created_date = models.DateTimeField(default=timezone.now)
 
     def publish(self):

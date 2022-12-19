@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+from django.db.models import Sum
 
 from .models import Transaction
 from .serializers import *
@@ -26,21 +27,27 @@ def transactions_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['PUT', 'DELETE'])
-def transactions_detail(request, id):
-    try:
-        transaction = Transaction.objects.get(id=id)
-    except Transaction.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+# @api_view(['PUT', 'DELETE'])
+# def transactions_detail(request, id):
+#     try:
+#         transaction = Transaction.objects.get(id=id)
+#     except Transaction.DoesNotExist:
+#         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'PUT':
-        serializer = TransactionSerializer(
-            transaction, data=request.data, context={'request': request})
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     if request.method == 'PUT':
+#         serializer = TransactionSerializer(
+#             transaction, data=request.data, context={'request': request})
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(status=status.HTTP_204_NO_CONTENT)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        transaction.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     elif request.method == 'DELETE':
+#         transaction.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def deposits_list(request):
+    data = Transaction.objects.filter(
+        transaction_type="deposit").filter(user_name=1).aggregate(total_deposits=Sum('amount'))
+    return Response(data)

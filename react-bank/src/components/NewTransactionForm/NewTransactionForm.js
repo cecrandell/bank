@@ -3,11 +3,11 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 import axios from "axios";
 
-import { API_URL } from "../../constants";
+import { TRANSACTIONS_API_URL } from "../../constants";
 
 class NewTransactionForm extends React.Component {
   state = {
-    id: 1,
+    id: 2,
     user_name: 1,
     transaction_type: this.props.transaction_type,
     amount: "",
@@ -21,7 +21,7 @@ class NewTransactionForm extends React.Component {
 
   createTransaction = (e) => {
     e.preventDefault();
-    axios.post(API_URL, this.state).then(() => {
+    axios.post(TRANSACTIONS_API_URL, this.state).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
@@ -29,7 +29,7 @@ class NewTransactionForm extends React.Component {
 
   editTransaction = (e) => {
     e.preventDefault();
-    axios.put(API_URL + this.state.id, this.state).then(() => {
+    axios.put(TRANSACTIONS_API_URL + this.state.id, this.state).then(() => {
       this.props.resetState();
       this.props.toggle();
     });

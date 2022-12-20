@@ -170,7 +170,7 @@ And follow the prompts below within the Docker container:
 - HTML
 <!-- - Docker -->
 
-**Technologies Used**
+**Future Developments**
 
 - User authentication
 - Docker container

@@ -7,6 +7,19 @@ class NewTransactionModal extends Component {
     modal: false,
   };
 
+  rowColor = (type) => {
+    switch (type) {
+      case "deposit":
+        return "#004176";
+      case "withdraw":
+        return "#c3b5c1";
+      case "transfer":
+        return "#84516d";
+      default:
+        return "";
+    }
+  };
+
   toggle = () => {
     this.setState((previous) => ({
       modal: !previous.modal,
@@ -22,9 +35,11 @@ class NewTransactionModal extends Component {
           onClick={this.toggle}
           style={{
             minWidth: "200px",
-            backgroundColor: "#002a4d",
+            backgroundColor: this.rowColor(transaction_type),
+            color: "white",
             border: "none",
             fontWeight: "bold",
+            margin: "20px",
           }}
         >
           New {transaction_type}

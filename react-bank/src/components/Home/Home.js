@@ -3,6 +3,7 @@ import { Col, Container, Row } from "reactstrap";
 import TransactionList from "../TransactionList/TransactionList";
 import NewTransactionModal from "../NewTransactionModal/NewTransactionModal";
 import PieChart from "../PieChart/PieChart.js";
+import "./home.css";
 
 import axios from "axios";
 
@@ -21,10 +22,6 @@ class Home extends Component {
     total_withdraws: 0,
     total_transfers_out: 0,
     total_transfers_in: 0,
-    // total_balance:
-    //   this.state.total_deposits +
-    //   this.state.total_transfers_in -
-    //   (this.state.total_withdraws + this.state.total_transfers_out),
   };
 
   componentDidMount() {
@@ -76,28 +73,24 @@ class Home extends Component {
             </Col>
           </Row>
         </Container>
-        <Container style={{ marginTop: "20px", textAlign: "center" }}>
-          <Row>
-            <Col>
-              <NewTransactionModal
-                type={"deposit"}
-                resetState={this.resetState}
-              />
-            </Col>
-            <Col>
-              <NewTransactionModal
-                type={"withdraw"}
-                resetState={this.resetState}
-              />
-            </Col>
-            <Col>
-              <NewTransactionModal
-                type={"transfer"}
-                resetState={this.resetState}
-              />
-            </Col>
-          </Row>
+        <Container style={{ textAlign: "center" }}>
+          <h1>
+            Total Balance: $
+            {(
+              this.state.total_deposits +
+              this.state.total_transfers_in -
+              (this.state.total_withdraws + this.state.total_transfers_out)
+            ).toFixed(2)}
+          </h1>
         </Container>
+        <Container style={{ textAlign: "center", padding: "20px" }}>
+          <NewTransactionModal type={"deposit"} resetState={this.resetState} />
+
+          <NewTransactionModal type={"withdraw"} resetState={this.resetState} />
+
+          <NewTransactionModal type={"transfer"} resetState={this.resetState} />
+        </Container>
+
         <Container style={{ marginTop: "20px" }}>
           <Row>
             <Col>

@@ -10,7 +10,7 @@ from .serializers import *
 @api_view(['GET', 'POST'])
 def transactions_list(request):
     if request.method == 'GET':
-        data = Transaction.objects.all()
+        data = Transaction.objects.all().order_by('-created_date')
 
         serializer = TransactionSerializer(
             data, context={'request': request}, many=True)
@@ -49,26 +49,26 @@ def transactions_list(request):
 @api_view(['GET'])
 def deposits_list(request):
     data = Transaction.objects.filter(
-        transaction_type="deposit").filter(user_name=1).aggregate(total_deposits=Sum('amount'))
+        transaction_type="deposit").filter(user_name="cecrandell").aggregate(total_deposits=Sum('amount'))
     return Response(data)
 
 
 @api_view(['GET'])
 def withdraws_list(request):
     data = Transaction.objects.filter(
-        transaction_type="withdraw").filter(user_name=1).aggregate(total_withdraws=Sum('amount'))
+        transaction_type="withdraw").filter(user_name="cecrandell").aggregate(total_withdraws=Sum('amount'))
     return Response(data)
 
 
 @api_view(['GET'])
 def transfers_out_list(request):
     data = Transaction.objects.filter(
-        transaction_type="transfer").filter(sender_user_name="carolinecrandell").aggregate(total_transfers_out=Sum('amount'))
+        transaction_type="transfer").filter(sender_user_name="cecrandell").aggregate(total_transfers_out=Sum('amount'))
     return Response(data)
 
 
 @api_view(['GET'])
 def transfers_in_list(request):
     data = Transaction.objects.filter(
-        transaction_type="transfer").filter(receiver_user_name="carolinecrandell").aggregate(total_transfers_in=Sum('amount'))
+        transaction_type="transfer").filter(receiver_user_name="cecrandell").aggregate(total_transfers_in=Sum('amount'))
     return Response(data)

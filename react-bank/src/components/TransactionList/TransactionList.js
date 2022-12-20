@@ -3,6 +3,17 @@ import { Table } from "reactstrap";
 import "./transactionList.css";
 
 class TransactionList extends Component {
+  formatDate = (dateString) => {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   rowColor = (type, sender_user_name) => {
     switch (type) {
       case "deposit":
@@ -69,7 +80,7 @@ class TransactionList extends Component {
                 </td>
                 <td>{transaction.sender_user_name}</td>
                 <td>{transaction.receiver_user_name}</td>
-                <td>{transaction.created_date}</td>
+                <td>{this.formatDate(transaction.created_date)}</td>
               </tr>
             ))
           )}

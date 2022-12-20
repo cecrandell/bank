@@ -166,9 +166,15 @@ And follow the prompts below within the Docker container:
 - Django
 - Python
 - SQLite
-<!-- - Docker -->
 - CSS
 - HTML
+<!-- - Docker -->
+
+**Technologies Used**
+
+- User authentication
+- Docker container
+- Deploy to AWS 
 
 **Developer**
 

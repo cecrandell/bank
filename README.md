@@ -6,7 +6,7 @@
 
 I have developed an internet banking application where users are able to:
 
-- Create an account (username, first name, last name, email, and password)
+<!-- - Create an account (username, first name, last name, email, and password) -->
 - Check their current balance
 - View a history of transactions
 - Deposit money
@@ -23,20 +23,20 @@ The internet banking application is divided into the following folders:
 - **bank folder** - contains the fundamental code used to run the internet banking application (including settings.py)
 - **internet_banking folder** - contains the static files, database structure, and functionality of the NHS forms and clinician portal
 - **react-bank folder** - contains the React app frontend files
-- **.dockerignore** - document that indicates which files to omit from the Docker container
+<!-- - **.dockerignore** - document that indicates which files to omit from the Docker container -->
 - **.gitignore** - document that indicates which files to omit from the GitHub repository, such as the myvenv folder and the environment variables (i.e., passwords stored in the .env file)
-- **docker-compose.yml** - contains instructions for building a Docker container
-- **Dockerfile** - contains instructions for creating a Docker image
+<!-- - **docker-compose.yml** - contains instructions for building a Docker container -->
+<!-- - **Dockerfile** - contains instructions for creating a Docker image -->
 - **manage.py file** - contains the code to run the internet banking application
 - **README** - this document, providing background information for the application
 - **requirements.txt** - contains the instructions of which packages to install when creating a new virtual environment
 - **myvenv folder** - (in the .gitignore) contains the packages and virtual environment to run the internet banking application
 - **db.sqlite3** - (in the .gitignore) the database file
-- **internet_banking.log** - (in the .gitignore) the log to document notable events that occur when users interact with the internet banking application
+<!-- - **internet_banking.log** - (in the .gitignore) the log to document notable events that occur when users interact with the internet banking application -->
 
 **Step-by-Step on how to run the application**
 
-First clone this application repository on to your computer. Open your terminal and navigate to where you would like to download the source code. Then for SSH, type:
+First clone this application repository on to your computer. Open your Terminal and navigate to where you would like to download the source code. Then for SSH, type:
 
 ```js
 git clone git@github.com:cecrandell/bank.git
@@ -48,7 +48,7 @@ Or for HTTPS, type:
 git clone https://github.com/cecrandell/bank.git
 ```
 
-Now that you have downloaded the application on to your computer, please ensure that you have [Python3 installed](https://realpython.com/installing-python/) on your computer. Then navigate to the root folder in your terminal and create a new virtual environment:
+Now that you have downloaded the application on to your computer, please ensure that you have [Python3 installed](https://realpython.com/installing-python/) on your computer. Then navigate to the root folder in your Terminal and create a new virtual environment:
 
 ```js
 python3 -m venv myvenv
@@ -76,9 +76,11 @@ In the mysite folder in the root folder of the repository, create a .env file th
 
 ![env](images/env.png)
 
-All login details should be customized to your accounts, however, to acquire the Django Secret Key, please contact the developer (contact details below). After all login details are configured, please create a signer.py file with the following contents in the root folder of the repository:
+All login details should be customized to your accounts, however, to acquire the Django Secret Key, please contact the developer (contact details below). 
 
-![signer](images/signer.png)
+<!-- After all login details are configured, please create a signer.py file with the following contents in the root folder of the repository:
+
+![signer](images/signer.png) -->
 
 Then make migrations to initialize the database:
 
@@ -98,9 +100,7 @@ Then create a login:
 python manage.py createsuperuser
 ```
 
-And follow the prompts below:
-
-![createsuperuser](images/createsuperuser.png)
+And follow the Terminal prompts to create a new superuser.
 
 You may now launch the application in your browser:
 
@@ -108,7 +108,7 @@ You may now launch the application in your browser:
 python manage.py runserver
 ```
 
-# To Set Up Docker (Optional)
+<!-- # To Set Up Docker (Optional)
 
 To build the Docker image:
 
@@ -128,7 +128,7 @@ To acquire the Docker container ID:
 docker ps
 ```
 
-Copy the Docker container ID and in a new terminal, type:
+Copy the Docker container ID and in a new Terminal, type:
 
 ```js
 docker exec -it [copied Docker container ID] /bin/sh
@@ -154,11 +154,11 @@ python manage.py createsuperuser
 
 And follow the prompts below within the Docker container:
 
-![createsuperuser](images/createsuperuser.png)
+![createsuperuser](images/createsuperuser.png) -->
 
-**Links to deployed version of application**
+<!-- **Links to deployed version of application**
 
-- AWS Site:
+- AWS Site: -->
 
 **Technologies Used**
 
@@ -166,7 +166,7 @@ And follow the prompts below within the Docker container:
 - Django
 - Python
 - SQLite
-- Docker
+<!-- - Docker -->
 - CSS
 - HTML
 
